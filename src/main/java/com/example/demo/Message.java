@@ -16,7 +16,7 @@ public class Message {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    // Getters and Setters
+    
     public Long getId() {
         return id;
     }

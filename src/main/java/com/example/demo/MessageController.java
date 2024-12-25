@@ -7,23 +7,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/messages")
-@CrossOrigin(origins = "http://localhost:3000") // Allow requests from React frontend
+
+@CrossOrigin(origins = "https://krrpacho.github.io")
+//@CrossOrigin(origins = "http://localhost:3000") 
 public class MessageController {
 
     @Autowired
     private MessageService messageService;
 
-    // Fetch all messages
     @GetMapping
     public List<Message> getAllMessages() {
         return messageService.getAllMessages();
     }
-
-    // Save a new message
-    // @PostMapping
-    // public Message saveMessage(@RequestBody Message message) {
-    //     return messageService.saveMessage(message);
-    // }
 
     @PostMapping
     public Message saveMessage(@RequestBody Message message) {
@@ -31,14 +26,11 @@ public class MessageController {
         return messageService.saveMessage(message);
     }   
 
-
-    // Delete a message
     @DeleteMapping("/{id}")
     public void deleteMessage(@PathVariable Long id) {
         messageService.deleteMessage(id);
     }
 
-    // Update an existing message
     @PutMapping("/{id}")
     public Message updateMessage(@PathVariable Long id, @RequestBody Message updatedMessage) {
         return messageService.updateMessage(id, updatedMessage);
